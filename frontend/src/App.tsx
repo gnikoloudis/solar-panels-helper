@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, type FormEvent } from "react";
 import Form, { type FormData, type TouBlock } from "./components/Form";
 import MapPicker from "./components/MapPicker";
 import Results from "./components/Results";
@@ -55,6 +55,7 @@ export default function App() {
   const [lat, setLat] = useState(48.8566);
   const [lng, setLng] = useState(2.3522);
   const [result, setResult] = useState<Nullable<Result>>(null);
+  const [fbSent, setFbSent] = useState(false);
   const [error, setError] = useState<Nullable<string>>(null);
   const [loading, setLoading] = useState(false);
   const [pricePerKwh, setPricePerKwh] = useState(0.12);
@@ -162,6 +163,35 @@ export default function App() {
 
       {result && <EnergyChart data={result.daily_estimates} />}
       <Results result={result} price_per_kwh={pricePerKwh} />
+
+      <details className="guide feedback-section">
+        <summary>💬 Feedback / Report an issue</summary>
+        {fbSent ? (
+          <p className="fb-thanks">Thank you for your feedback!</p>
+        ) : (
+          <form className="fb-form" onSubmit={async (e: FormEvent<HTMLFormElement>) => {
+            e.preventDefault();
+            const f = e.currentTarget;
+            const data = new FormData(f);
+            // 🔁 Replace FORMSPREE_ID with your Formspree form ID
+            // Sign up at https://formspree.io and create a new form
+            const res = await fetch("https://formspree.io/f/YOUR_FORMSPREE_ID", {
+              method: "POST", body: data, headers: { Accept: "application/json" },
+            });
+            if (res.ok) setFbSent(true);
+          }}>
+            <label>
+              Your message
+              <textarea name="message" rows={3} required placeholder="What could be improved? Encountered a bug? Let me know..." />
+            </label>
+            <label>
+              Email (optional)
+              <input type="email" name="_replyto" placeholder="In case I need to follow up" />
+            </label>
+            <button type="submit" className="btn-primary">Send</button>
+          </form>
+        )}
+      </details>
     </>
   );
 }

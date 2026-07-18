@@ -168,6 +168,46 @@ details summary {
   color: var(--text);
 }
 
+.feedback-section {
+  margin-top: 2rem;
+}
+
+.fb-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.fb-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.fb-form textarea,
+.fb-form input {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 10px;
+  color: var(--text);
+  font-size: 0.875rem;
+  outline: none;
+}
+
+.fb-form button {
+  align-self: flex-start;
+}
+
+.fb-thanks {
+  color: var(--accent);
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
 .badge {
   font-size: 0.65rem;
   background: var(--surface-2);
