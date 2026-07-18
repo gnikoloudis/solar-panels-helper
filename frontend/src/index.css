@@ -146,6 +146,28 @@ details summary {
   user-select: none;
 }
 
+.guide {
+  background: var(--surface);
+  border: 1px solid var(--accent-glow);
+  margin-bottom: 1rem;
+}
+
+.guide summary {
+  color: var(--accent);
+  font-size: 0.9rem;
+}
+
+.guide ol {
+  margin: 0.5rem 0 0 1.2rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.guide ol li strong {
+  color: var(--text);
+}
+
 .badge {
   font-size: 0.65rem;
   background: var(--surface-2);

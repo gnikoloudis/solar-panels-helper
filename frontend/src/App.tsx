@@ -138,8 +138,19 @@ export default function App() {
     <>
       <header className="app-header">
         <h1>Solar Energy Estimator</h1>
-        <p>Click the map to pick a location, then set your date range</p>
+        <p>Click the map to pick a location, then set your date range and optional features below</p>
       </header>
+
+      <details className="guide">
+        <summary>How to use this tool</summary>
+        <ol>
+          <li><strong>Pick a location</strong> — click anywhere on the map or drag the marker</li>
+          <li><strong>Set a date range</strong> — choose start and end dates (past or future)</li>
+          <li><strong>Configure panels</strong> — area, efficiency, tracking mode, tilt, and azimuth (optional, defaults work well)</li>
+          <li><strong>Optional extras</strong> — expand the sections below to add shading, EV charging, payback analysis, or time-of-use rates</li>
+          <li><strong>Click Estimate</strong> — view daily energy, charts, and optional financial results</li>
+        </ol>
+      </details>
 
       <div className="map-wrapper">
         <MapPicker lat={lat} lng={lng} onChange={handleMapChange} />
