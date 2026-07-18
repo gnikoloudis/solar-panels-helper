@@ -1,3 +1,6 @@
+# Agent workspace
+.agents/
+
 # Python
 __pycache__/
 *.py[cod]
