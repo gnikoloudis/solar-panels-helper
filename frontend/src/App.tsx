@@ -173,9 +173,9 @@ export default function App() {
             e.preventDefault();
             const f = e.currentTarget;
             const data = new FormData(f);
-            // 🔁 Replace FORMSPREE_ID with your Formspree form ID
-            // Sign up at https://formspree.io and create a new form
-            const res = await fetch("https://formspree.io/f/YOUR_FORMSPREE_ID", {
+            const id = import.meta.env.VITE_FORMSPREE_ID;
+            if (!id) return alert("Feedback form not configured.");
+            const res = await fetch(`https://formspree.io/f/${id}`, {
               method: "POST", body: data, headers: { Accept: "application/json" },
             });
             if (res.ok) setFbSent(true);

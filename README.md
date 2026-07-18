@@ -24,6 +24,7 @@ uv run uvicorn solarpanels.main:app --reload --port 8000
 
 ```bash
 cd frontend
+cp .env.example .env   # configure VITE_FORMSPREE_ID for feedback form (optional)
 npm install
 npm run dev
 ```
